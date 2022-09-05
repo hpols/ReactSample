@@ -1,0 +1,49 @@
+$primary-color: #001A33;
+$primary-highlight: #002a54;
+$secondary-color: #fffeea;
+$secondary-highlight: #fffbad;
+$black: #000000;
+
+/// Mixin to prefix a property
+/// @author Kitty Giraudel
+/// @param {String} $property - Property name
+/// @param {*} $value - Property value
+/// @param {List} $prefixes (()) - List of prefixes to print
+@mixin prefix($property, $value, $prefixes: ()) {
+    @each $prefix in $prefixes {
+      #{'-' + $prefix + '-' + $property}: $value;
+    }
+   
+    // Output standard non-prefixed declaration
+    #{$property}: $value;
+  }
+
+@mixin mobile {
+    @media (min-width: 600px) {
+        @content
+    }
+}
+
+@mixin tablet {
+    @media(min-width:700px) and (max-width:1000px){
+        @content
+    } 
+}
+
+@mixin twoCol {
+    @media (min-width : 700px) {
+        @content
+    }
+}
+
+@mixin imgFloat {
+    @media (min-width: 900px) {
+        @content
+    }
+}
+
+@mixin desktop {
+    @media(min-width:1001px){
+        @content
+    }
+}

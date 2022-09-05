@@ -1,0 +1,79 @@
+@use "../styles/mixin.scss" as mixin;
+
+/* MENU & NAVLINKS*/
+.menu {
+    float: left;
+    width: 100%;
+    margin: 0;
+    font-weight: 400;
+}
+#menulink {
+     background-color: mixin.$primary-color;
+     margin: 0;
+     text-align: center;
+     & a {
+        color: mixin.$secondary-color;
+        font-size: 1em;
+        text-transform: uppercase;
+        font-weight: 200;
+        text-decoration: none;
+        font-family: source-sans-pro;
+        font-style: normal;
+    } 
+    @include mixin.mobile {
+        display: none;
+    }
+}
+  #navlinks {
+    width: 100%;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    text-align: center;
+    background-color: mixin.$black;
+    background-color: rgba(0, 26, 51, 0.65);
+    position: absolute;
+    -webkit-transition: all ease-out 0.5s;
+    transition: all ease-out 0.5s;
+    font-weight: 400;
+    &.displayed {
+        top: 35px;
+        z-index: 1;
+        opacity: 1;
+    }
+    &.start {
+        display: none;
+    }
+    &.collapsed {
+        top: -20em;
+        opacity: 0;
+    }
+    & a {
+         display: block;
+         padding: 10px 0;
+         color: mixin.$secondary-color;
+         font-weight: 400;
+         text-decoration: none;
+         text-transform: uppercase;
+         &:hover, &:active, &:focus, &.thispage {
+             color: mixin.$secondary-highlight;
+            }
+        }
+        @include mixin.mobile {
+            max-width: 1000px;
+            position: static;
+            &.collapsed {
+                opacity: 1;
+            }
+            & a {
+                width: 15%;
+                padding-top: 15 0;
+                margin-bottom: 20px;
+                float: left;
+                font-weight: 700;
+                &:hover, &:active, &:focus, &.thispage {
+                    font-size: 18px;
+                }
+            }
+        }
+    }
